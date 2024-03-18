@@ -19,6 +19,16 @@ const getProblem = async (req, res) => {
     }
 }
 
+const getProblemBySlug = async (req, res) => {
+    try {
+        const { slug } = req.params
+        const problem = await Problem.find({slug: slug})
+        res.status(200).json(problem)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
+
 const createProblem = async (req, res) => {
     try {
         const problem = await Problem.create(req.body)
@@ -62,5 +72,6 @@ module.exports = {
     getProblem,
     createProblem,
     updateProblem,
-    deleteProblem
+    deleteProblem,
+    getProblemBySlug
 }
