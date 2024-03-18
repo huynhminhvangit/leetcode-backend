@@ -3,7 +3,7 @@ const { getProblems, createProblem, getProblem, deleteProblem, updateProblem } =
 const { middlewareAuth } = require('../middleware')
 const router = express.Router()
 
-router.get('/', middlewareAuth, getProblems)
+router.get('/', getProblems)
 
 router.post('/', middlewareAuth, createProblem)
 

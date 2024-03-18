@@ -6,7 +6,7 @@ const login = async (req, res) => {
         const { email, password } = req.body
         const user = await User.findOne({ email: email })
         if (!user) {
-            res.status(401).json({ success: false, message: 'Email not found' })
+            res.status(401).json({ success: false, message: 'Invalid credentials' })
         }
         const isValid = validPassword(password, user.hash, user.salt)
 
@@ -15,7 +15,7 @@ const login = async (req, res) => {
 
             res.status(200).json({ success: true, tokenType: jwt.tokenType, token: jwt.token, expiresIn: jwt.expires })
         } else {
-            res.status(401).json({ success: false, message: 'Incorrect password' })
+            res.status(401).json({ success: false, message: 'Invalid credentials' })
         }
     } catch (error) {
         res.status(500).json({ success: false, message: error.message })

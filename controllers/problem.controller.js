@@ -3,9 +3,9 @@ const Problem = require('../models/problem.model.js')
 const getProblems = async (req, res) => {
     try {
         const problems = await Problem.find({})
-        res.status(200).json(problems)
+        res.status(200).json({ success: true, data: problems, message: '' })
     } catch (error) {
-        res.status(500).json({ message: error.message })
+        res.status(500).json({ success: false, message: error.message })
     }
 }
 
