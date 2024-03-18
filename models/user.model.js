@@ -11,10 +11,13 @@ const UserSchema = mongoose.Schema(
             required: [true, 'Email is required'],
             default: 0
         },
-        password: {
+        salt: {
             type: String,
-            required: [true, 'Password is required'],
-            default: 0
+            required: false
+        },
+        hash: {
+            type: String,
+            required: false
         },
         avatar: {
             type: String,
