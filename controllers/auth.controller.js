@@ -22,6 +22,16 @@ const login = async (req, res) => {
     }
 }
 
+const getProfile = async (req, res) => {
+    try {
+        const { sub } = req.jwt
+        const user = await User.findById(sub)
+        res.status(200).json({ success: true, data: user, message: '', code: 'SUCCESS' })
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message })
+    }
+}
+
 const register = async (req, res, next) => {
     try {
         const { email, password, name } = req.body
@@ -48,5 +58,6 @@ const register = async (req, res, next) => {
 
 module.exports = {
     login,
-    register
+    register,
+    getProfile
 }

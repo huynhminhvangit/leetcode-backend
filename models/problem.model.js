@@ -35,6 +35,10 @@ const ProblemSchema = mongoose.Schema(
         link: {
             type: String,
             required: false
+        },
+        slug: {
+            type: String,
+            required: true
         }
     },
     {

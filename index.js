@@ -13,6 +13,7 @@ require('./config/passport.js')(passport)
 
 app.use(passport.initialize())
 
+const problemRoute = require('./routes/problem.route.js')
 const userRoute = require('./routes/user.route.js')
 const authRoute = require('./routes/auth.route.js')
 const { standardExpressCallback } = require('./middleware/index.js')
@@ -31,6 +32,7 @@ app.use(errorHandler)
 
 // routes
 app.use('/api/users', userRoute)
+app.use('/api/problems', problemRoute)
 app.use('/api/auth', authRoute)
 
 
