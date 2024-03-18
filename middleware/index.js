@@ -12,7 +12,7 @@ const standardExpressCallback = (req, res, next) => {
 }
 
 const middlewareAuth = (req, res, next) => {
-    if (!req.headers.authorization) {
+    if (!req.headers && !req.headers.authorization) {
         res.status(401).json({ success: false, msg: "You are not authorized to visit this route" });
     }
     const tokenParts = req.headers.authorization.split(' ');
